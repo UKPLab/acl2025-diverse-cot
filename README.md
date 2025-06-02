@@ -1,13 +1,12 @@
-# Fine-Tuning with Divergent Chains of Thought Boosts Reasoning Through Self-Correction in Language Models
+# Fine-Tuning on Diverse Reasoning Chains Drives Within-Inference CoT Refinement in LLMs
 
-This repository includes the code and prompts to fine-tune and evaluate LLMs on Divergent Chain of Thought as described in our 2024 arXiv paper "Fine-Tuning with Divergent Chains of Thought Boosts Reasoning Through Self-Correction in Language Models."
+This repository includes the code and prompts to fine-tune and evaluate LLMs on Diverse Chains of Thought as described in our ACL 2025 paper "Fine-Tuning on Diverse Reasoning Chains Drives Within-Inference CoT Refinement in LLMs."
 
 
 
 > **Abstract**:
-We present a novel method of further improving performance by requiring models to compare multiple reasoning chains before generating a solution in a single inference step. We call this method Divergent CoT (DCoT).
-We generate a DCoT dataset where a question is answered by a series of alternative (and correct) chains of thought. Importantly, all these CoTs are part of the same label, thus, forcing the LLM to learn how to generate multiple CoTs in a single inference step.
-We find that instruction tuning on DCoT datasets boosts the performance of LLMs of all sizes (from 1.3B to 70B). These performance gains stem from models generating multiple divergent reasoning chains in a single inference step, indicative of the enabling of self-correction in language models.
+Requiring a large language model (LLM) to generate intermediary reasoning steps, known as Chain of Thought (CoT), has been shown to be an effective way of boosting performance. Previous approaches have focused on generating multiple independent CoTs, combining them through ensembling or other post-hoc strategies to enhance reasoning. In this work, we introduce a novel approach where LLMs are fine-tuned to generate a sequence of Diverse Chains of Thought (DCoT) within a single inference step, which is fundamentally different from prior work that primarily operate on parallel CoT generations. DCoT allows LLMs to gain the ability to perform within-inference refinement of reasoning chains without requiring external feedback. Through a rigorous set of experiments spanning a wide range of tasks that require various reasoning types, we show that fine-tuning on DCoT improves performance over the CoT baseline across model families and scales (1.3B to 70B). These improvements are particularly impactful for tasks with a large result state space, such as those involving numeric answers. Our work is also significant because both quantitative analyses and manual evaluations reveal the observed gains stem from the models' ability to refine an initial reasoning chain by generating a second, improved chain within the same inference step, demonstrating previously elusive self-improvement.
+
 
 ![divergent CoT description](./assets/intro.png)
 
@@ -181,14 +180,13 @@ You can see some output samples manually analyzed in `dcot_samples.json`
 If you find our work useful, please consider citing it using the following citation:
 
 ```
-@misc{puerto2024dcot,
-      title={Fine-Tuning with Divergent Chains of Thought Boosts Reasoning Through Self-Correction in Language Models}, 
-      author={Haritz Puerto and Tilek Chubakov and Xiaodan Zhu and Harish Tayyar Madabushi and Iryna Gurevych},
-      year={2024},
-      eprint={2407.03181},
-      archivePrefix={arXiv},
-      primaryClass={cs.CL},
-      url={https://arxiv.org/abs/2407.03181}, 
+@misc{puerto2024finetuning,
+    title={Fine-Tuning on Diverse Reasoning Chains Drives Within-Inference CoT Refinement in LLMs},
+    author={Haritz Puerto and Tilek Chubakov and Xiaodan Zhu and Harish Tayyar Madabushi and Iryna Gurevych},
+    year={2024},
+    eprint={2407.03181},
+    archivePrefix={arXiv},
+    primaryClass={cs.CL}
 }
 ```
 
